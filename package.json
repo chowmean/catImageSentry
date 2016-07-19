@@ -1,0 +1,19 @@
+{
+  "name": "sentry",
+  "version": "1.0.0",
+  "description": "",
+  "main": "angular.min.js",
+  "dependencies": {
+    "express": "^4.14.0",
+    "newrelic": "^1.28.3",
+    "raven": "^0.11.0",
+    "request": "^2.73.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

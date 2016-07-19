@@ -1,0 +1,45 @@
+<script src="angular.min.js"></script>
+<script src="raven.min.js"></script>
+<script>Raven.config('https://7a80f1bfd12b4ea8986d3dfd43adbd8b@app.getsentry.com/86889').install();</script>
+<div ng-app="imageApp">
+  <div ng-controller="imageController">
+<div ng-repeat='x in  details.data'>
+  <img src="{{x.images.fixed_height.url}}" height="100" class='imagess'/>
+
+</div>
+  </div>
+</div>
+<style>
+.imagess
+{
+  float:left;
+  margin:20px;
+  padding:20px;
+  border:1px solid black;
+}
+</style>
+
+<script>
+
+
+
+var mainApp = angular.module("imageApp", []);
+
+         mainApp.controller('imageController', function($scope,$http) {
+
+           try {
+             $http.get("http://localhost:3000/images")
+               .then(
+                 function(response){
+                     $scope.details = response.data;
+                     console.log($scope.details);
+                });
+           }
+           catch(e) {
+               Raven.captureException(e)
+           }
+
+         });
+
+
+</script>
